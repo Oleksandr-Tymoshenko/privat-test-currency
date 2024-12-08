@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-books-table
+      author: Oleksandr Tymoshenko
+      changes:
+        - createTable:
+            tableName: exchange_rate
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: currency
+                  type: VARCHAR(3)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: rate_buy
+                  type: DECIMAL(19, 6)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: rate_sell
+                  type: DECIMAL(19, 6)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: timestamp
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false

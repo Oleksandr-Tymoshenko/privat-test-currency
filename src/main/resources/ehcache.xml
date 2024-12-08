@@ -1,0 +1,34 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+         updateCheck="false">
+
+    <!-- Default cache configuration -->
+    <defaultCache maxEntriesLocalHeap="1000" eternal="false" timeToLiveSeconds="3600">
+        <persistence strategy="none"/>
+    </defaultCache>
+
+    <!-- Cache for exchangeRates -->
+    <cache name="exchangeRates"
+           maxEntriesLocalHeap="500"
+           eternal="false"
+           timeToLiveSeconds="3600">
+        <persistence strategy="none"/>
+    </cache>
+
+    <!-- Cache for dynamicDetails -->
+    <cache name="dynamicDetails"
+           maxEntriesLocalHeap="500"
+           eternal="false"
+           timeToLiveSeconds="3600">
+        <persistence strategy="none"/>
+    </cache>
+
+    <!-- Cache for dynamicDetailsList -->
+    <cache name="dynamicDetailsList"
+           maxEntriesLocalHeap="300"
+           eternal="false"
+           timeToLiveSeconds="3600">
+        <persistence strategy="none"/>
+    </cache>
+
+</ehcache>
