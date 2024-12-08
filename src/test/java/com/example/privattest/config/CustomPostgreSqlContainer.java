@@ -3,7 +3,7 @@ package com.example.privattest.config;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 public class CustomPostgreSqlContainer extends PostgreSQLContainer<CustomPostgreSqlContainer> {
-    private static final String IMAGE_VERSION = "postgres:15.3";
+    private static final String IMAGE_VERSION = "postgres:12.19";
     private static CustomPostgreSqlContainer container;
 
     private CustomPostgreSqlContainer() {

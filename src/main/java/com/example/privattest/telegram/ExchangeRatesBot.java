@@ -68,7 +68,7 @@ public class ExchangeRatesBot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage(chatIdString, text);
         try {
             execute(sendMessage);
-            log.info("Successfully sent message to chat ID: {}. Message: {}", chatId, text);
+            log.debug("Successfully sent message to chat ID: {}. Message: {}", chatId, text);
         } catch (TelegramApiException ex) {
             log.error("Couldn't send message in telegram. Message: {}. Exception: {}",
                     text, ex.getMessage());

@@ -122,7 +122,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
                     averageRates.values());
             notificationService.notify(averageRates.values().stream().toList());
         } catch (Exception e) {
-            log.error("Error fetching or saving exchange rates: ", e);
+            log.error("Error fetching or saving exchange rates: {}", e.getMessage());
         }
     }
 

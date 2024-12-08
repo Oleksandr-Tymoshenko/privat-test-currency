@@ -37,6 +37,8 @@ git clone https://github.com/Oleksandr-Tymoshenko/privat-test-currency.git
 ```text
 https://t.me/privat_testtask_exchange_bot
 ```
+### Для запуску інтеграційних тестів потрібно запустити локально Docker 
+
 
 <h2 id="controllers"> Endpoints</h2>
 

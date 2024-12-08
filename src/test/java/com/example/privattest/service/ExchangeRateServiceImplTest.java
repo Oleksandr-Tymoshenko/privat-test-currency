@@ -299,17 +299,7 @@ class ExchangeRateServiceImplTest {
     void updateExchangeRates_whenSuccessfullyFetchedRates_savesRates() {
         // Given
         LocalDateTime now = LocalDateTime.now();
-        List<BankApiService<?>> bankApiServices = List.of(
-                privatBankApiService
-        );
-        exchangeRateService = new ExchangeRateServiceImpl(
-                bankApiServices,
-                calculationService,
-                notificationService,
-                exchangeRateMapper,
-                exchangeRateRepository,
-                timeProvider
-        );
+        mockBankApiServices();
 
         List<PrivatRateApiResponse> privatExchangeRates = List.of(
                 new PrivatRateApiResponse(
@@ -381,11 +371,28 @@ class ExchangeRateServiceImplTest {
     @DisplayName("updateExchangeRates - handles error when fetching rates from API")
     void updateExchangeRates_whenErrorOccursWhileFetchingRates_doesNotSaveRates() {
         // Given
+        mockBankApiServices();
         CompletableFuture<List<PrivatRateApiResponse>> failedFuture = new CompletableFuture<>();
         failedFuture.completeExceptionally(new RuntimeException("API Error"));
+        when(privatBankApiService.fetchRates())
+                .thenReturn(failedFuture);
 
         // When / Then
         assertDoesNotThrow(() -> exchangeRateService.updateExchangeRates());
         verify(exchangeRateRepository, times(0)).saveAll(anyList());
+    }
+
+    private void mockBankApiServices() {
+        List<BankApiService<?>> bankApiServices = List.of(
+                privatBankApiService
+        );
+        exchangeRateService = new ExchangeRateServiceImpl(
+                bankApiServices,
+                calculationService,
+                notificationService,
+                exchangeRateMapper,
+                exchangeRateRepository,
+                timeProvider
+        );
     }
 }
